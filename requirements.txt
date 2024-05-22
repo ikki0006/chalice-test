@@ -1,0 +1,35 @@
+blessed==1.20.0
+    # via inquirer
+botocore==1.34.109
+    # via chalice
+chalice==1.31.0
+    # via src
+click==8.1.7
+    # via chalice
+inquirer==2.10.1
+    # via chalice
+jmespath==1.0.1
+    # via botocore
+    # via chalice
+pip==23.3.2
+    # via chalice
+python-dateutil==2.9.0.post0
+    # via botocore
+python-editor==1.0.4
+    # via inquirer
+pyyaml==6.0.1
+    # via chalice
+readchar==4.1.0
+    # via inquirer
+setuptools==70.0.0
+    # via chalice
+six==1.16.0
+    # via blessed
+    # via chalice
+    # via python-dateutil
+urllib3==2.2.1
+    # via botocore
+wcwidth==0.2.13
+    # via blessed
+wheel==0.43.0
+    # via chalice

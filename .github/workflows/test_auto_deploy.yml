@@ -1,0 +1,41 @@
+name: lambda_auto_deploy
+
+on:
+  pull_request:
+    branches: [main]
+    types: [closed]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: dev
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: Git clone the repository
+        uses: actions/checkout@v4
+
+      - name: configure aws credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::${{ vars.AWS_ACCOUNT }}:role/${{ vars.AWS_ROLE_NAME }}
+          aws-region: ap-northeast-1
+
+      - name: access s3
+        run: aws s3 ls
+
+      - name: Set up Python version
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Deploy Lambda
+        run: |
+          chalice --version
