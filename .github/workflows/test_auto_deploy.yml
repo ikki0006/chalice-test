@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     environment: dev
     permissions:
@@ -39,5 +39,6 @@ jobs:
           chalice deploy --stage ${{ vars.ENV }}
 
       - name: upload s3 deployed file
+        if: ${{ !cancelled() }}
         run: |
           aws s3 cp .chalice/deployed/${{ vars.ENV }}.json s3://${{ vars.S3_BUCKET }}/deployed/
