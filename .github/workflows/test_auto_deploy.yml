@@ -29,10 +29,13 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install dependencies
+      - name: get s3 deployed file
         run: |
-          pip install -r requirements.txt
+          aws s3 mv s3://${{ vars.S3_BUCKET }}/deployed/${{ vars.ENV }}.json .chalice/deployed/
 
       - name: Deploy Lambda
         run: |
-          chalice deploy --stage ${{ vars.ENV }}
+          # pip install -r requirements.txt
+          # chalice deploy --stage ${{ vars.ENV }}
+          ls -ltr .chalice/deployed/
+          cat .chalice/deployed/${{ vars.ENV }}.json

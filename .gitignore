@@ -161,4 +161,5 @@ cython_debug/
 
 
 deployments/
-deployed/
+/.chalice/deployed/*.json
+.DS_Store
