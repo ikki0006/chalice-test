@@ -35,4 +35,4 @@ jobs:
 
       - name: Deploy Lambda
         run: |
-          chalice deploy --stage ${{ env.environment }}
+          chalice deploy --stage ${{ var.ENV }}
