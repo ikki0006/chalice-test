@@ -35,10 +35,8 @@ jobs:
 
       - name: Deploy Lambda
         run: |
-          # pip install -r requirements.txt
-          # chalice deploy --stage ${{ vars.ENV }}
-          ls -ltr .chalice/deployed/
-          cat .chalice/deployed/${{ vars.ENV }}.json
+          pip install -r requirements.txt
+          chalice deploy --stage ${{ vars.ENV }}
 
       - name: upload s3 deployed file
         run: |
