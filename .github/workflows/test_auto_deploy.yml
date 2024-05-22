@@ -39,3 +39,7 @@ jobs:
           # chalice deploy --stage ${{ vars.ENV }}
           ls -ltr .chalice/deployed/
           cat .chalice/deployed/${{ vars.ENV }}.json
+
+      - name: upload s3 deployed file
+        run: |
+          aws s3 cp .chalice/deployed/${{ vars.ENV }}.json s3://${{ vars.S3_BUCKET }}/deployed/
