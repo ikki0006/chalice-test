@@ -1,9 +1,9 @@
 name: lambda_auto_deploy
 
 on:
-  pull_request:
-    branches: [main]
-    types: [closed]
+  push:
+    branches:
+      - master
 
   workflow_dispatch:
 
