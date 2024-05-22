@@ -24,9 +24,6 @@ jobs:
           role-to-assume: arn:aws:iam::${{ vars.AWS_ACCOUNT }}:role/${{ vars.AWS_ROLE_NAME }}
           aws-region: ap-northeast-1
 
-      - name: access s3
-        run: aws s3 ls
-
       - name: Set up Python version
         uses: actions/setup-python@v5
         with:
@@ -38,4 +35,4 @@ jobs:
 
       - name: Deploy Lambda
         run: |
-          chalice --version
+          chalice deploy --stage ${{ env.environment }}
